@@ -1,0 +1,61 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  border: 1px solid;
+}
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+}
+.avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+.user {
+  margin-left: 18px;
+}
+.user h2 {
+  font-size: 25px;
+  color: #395996;
+  font-weight: 500;
+  cursor: pointer;
+}
+.name {
+  display: flex;
+  align-items: center;
+}
+.pontos {
+  cursor: pointer;
+  width: 2rem;
+}
+.patrocinio {
+  display: flex;
+  align-items: center;
+}
+.word {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.patrocinio p {
+  font-size: 20px;
+  font-weight: 400;
+  color: #606770;
+  display: inline;
+  margin-right: 10px;
+}
+.conteudo {
+  margin: 24px;
+}
+.banner {
+  width: 100%;
+}
