@@ -17,7 +17,9 @@ const Feeds = () => {
       console.log(error);
     }
   }
-  dadosApi();
+  React.useEffect(() => {
+    dadosApi();
+  }, []);
   return (
     <section>
       <div className={styled.container}>
