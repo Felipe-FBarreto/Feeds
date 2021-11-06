@@ -1,11 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import styled from '../styles/Style.module.css';
-import word from '../assets/word.png';
-import pontos from '../assets/pontos.png';
+import Post from './Post';
 
 const Feeds = () => {
   const [dados, setDados] = React.useState([]);
+
   async function dadosApi() {
     try {
       const response = await axios.get(
@@ -21,36 +20,21 @@ const Feeds = () => {
     dadosApi();
   }, []);
   return (
-    <section>
-      <div className={styled.container}>
-        {dados.map((dados, index) => (
-          <>
-            <div className={styled.intro}>
-              <div className={styled.name}>
-                <img
-                  className={styled.avatar}
-                  src={dados.user.avatar}
-                  alt="avatar"
-                />
-                <div className={styled.user}>
-                  <h2>{dados.user.name}</h2>
-                  <div className={styled.patrocinio}>
-                    <p>Patrocinado</p>
-                    <img className={styled.word} src={word} />
-                  </div>
-                </div>
-              </div>
-              <img className={styled.pontos} src={pontos} />
-            </div>
-            <p
-              dangerouslySetInnerHTML={{ __html: dados.content }}
-              className={styled.conteudo}
-            ></p>
-            <img className={styled.banner} src={dados.content_image} />
-          </>
-        ))}
-      </div>
-    </section>
+    <div key={dados.id}>
+      {dados.map((dados) => (
+        <Post
+          id={dados.id}
+          avatar={dados.user.avatar}
+          usuario={dados.user.name}
+          conteudo={dados.content}
+          banner={dados.content_image}
+          likes={dados.likes}
+          comentario={dados.total_comments}
+          compartilhamento={dados.shares}
+          comentarios={dados.comments}
+        />
+      ))}
+    </div>
   );
 };
 

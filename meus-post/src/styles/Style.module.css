@@ -7,55 +7,107 @@
 
 .container {
   max-width: 760px;
-  margin: 0 auto;
-  border: 1px solid;
-}
-.intro {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px;
+  margin: 3rem auto;
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 .avatar {
   width: 65px;
   height: 65px;
   border-radius: 50%;
-}
-.user {
-  margin-left: 18px;
-}
-.user h2 {
-  font-size: 25px;
-  color: #395996;
-  font-weight: 500;
+  margin-right: 1rem;
   cursor: pointer;
 }
-.name {
+.intro {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  position: relative;
+}
+.intro h2 {
+  color: #395996;
+  cursor: pointer;
+}
+.patrocinado {
   display: flex;
   align-items: center;
 }
+.patrocinado img {
+  width: 20px;
+  height: 20px;
+  margin-left: 1rem;
+}
+.patrocinado p {
+  color: #606770;
+}
 .pontos {
+  position: absolute;
+  right: 1.5rem;
   cursor: pointer;
   width: 2rem;
 }
-.patrocinio {
-  display: flex;
-  align-items: center;
-}
-.word {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-.patrocinio p {
-  font-size: 20px;
-  font-weight: 400;
-  color: #606770;
-  display: inline;
-  margin-right: 10px;
-}
+
 .conteudo {
-  margin: 24px;
+  margin: 1.5rem;
 }
 .banner {
   width: 100%;
+  display: block;
+}
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #606770;
+  padding: 0.8rem 1.5rem;
+}
+.likes {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.likes img {
+  width: 2rem;
+  height: 2rem;
+}
+.likes .coracao {
+  position: relative;
+  left: -7px;
+
+  z-index: -1;
+}
+.shares {
+  display: flex;
+}
+.shares span {
+  margin-left: 1rem;
+  cursor: pointer;
+  margin: 1px solid;
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.8rem 0;
+  width: 92%;
+  margin: 0 auto;
+  border-top: 1px solid;
+  color: #606770;
+}
+.acoes div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.acoes div img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 5px;
+}
+.acoes div button {
+  cursor: pointer;
+  border: 0;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #606770;
 }
