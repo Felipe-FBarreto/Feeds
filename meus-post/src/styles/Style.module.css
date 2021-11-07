@@ -6,13 +6,80 @@
 }
 
 .container {
-  max-width: 760px;
-  margin: 3rem auto;
+  max-width: 500px;
+  margin: 5rem auto;
   border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+}
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+}
+header div {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+}
+.pesquisar {
+  background-color: #f0f2f5;
+  padding: 0 0.5rem;
+  border-radius: 15px;
+}
+.search {
+  display: flex;
+  align-items: center;
+}
+.search input {
+  border: 0;
+  background-color: #f0f2f5;
+  font-size: 1rem;
+  outline: none;
+}
+.home img {
+  margin-right: 2rem;
+  cursor: pointer;
+  padding: 0 1rem;
+}
+.conta img {
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: #f0f2f5;
+  border-radius: 50%;
+}
+.story {
+  max-width: 600px;
+  margin: 100px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.story img {
+  width: 20%;
+  height: 170px;
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 0 0.8rem;
+  cursor: pointer;
 }
 .avatar {
-  width: 65px;
-  height: 65px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   margin-right: 1rem;
   cursor: pointer;
@@ -20,12 +87,13 @@
 .intro {
   display: flex;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 0 1.5rem;
   position: relative;
 }
 .intro h2 {
   color: #395996;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 .patrocinado {
   display: flex;
@@ -43,7 +111,7 @@
   position: absolute;
   right: 1.5rem;
   cursor: pointer;
-  width: 2rem;
+  width: 1.5rem;
 }
 
 .conteudo {
@@ -66,18 +134,20 @@
   cursor: pointer;
 }
 .likes img {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .likes .coracao {
   position: relative;
-  left: -7px;
-
+  left: -5px;
   z-index: -1;
 }
 .shares {
   display: flex;
+  align-items: center;
+  cursor: pointer;
 }
+
 .shares span {
   margin-left: 1rem;
   cursor: pointer;
@@ -100,14 +170,79 @@
   cursor: pointer;
 }
 .acoes div img {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
   margin-right: 5px;
 }
-.acoes div button {
+.acoes div label {
   cursor: pointer;
+}
+.comentar {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
   border: 0;
   background-color: #fff;
   font-size: 1rem;
   color: #606770;
+  cursor: pointer;
+}
+.novoComment {
+  padding: 0.8rem 0;
+  display: flex;
+  align-items: center;
+  margin: 0 1.5rem;
+  border-top: 1px solid;
+}
+
+.novoComment label {
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  border-radius: 50px;
+  border: 1px solid;
+  padding: 2rem;
+  margin-right: 0.8rem;
+}
+.novoComment input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 0;
+  outline: none;
+  background-color: #f0f2f5;
+  font-size: 1rem;
+}
+.atualComment {
+  display: flex;
+  padding: 1.5rem;
+}
+.atualComment img {
+  border-radius: 50%;
+  margin-right: 0.8rem;
+  width: unset;
+  width: 70px;
+  height: 70px;
+}
+
+.atualComment div div {
+  background-color: #f0f2f5;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+.atualComment div a {
+  font-weight: 400;
+  text-decoration: none;
+  color: #000;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.atualComment div span {
+  cursor: pointer;
+  margin: 5px 5px 5px 0;
+  display: inline-block;
+}
+.atualComment div span:hover {
+  border-bottom: 1px solid;
 }

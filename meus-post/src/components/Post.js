@@ -21,32 +21,10 @@ const Post = ({
   const [curtidas, setCurtidas] = React.useState(likes);
   const [comments, setComments] = React.useState(comentario);
   const [shares, setShares] = React.useState(compartilhamento);
-  const [coment, setComent] = React.useState();
+  const [coment, setComent] = React.useState(false);
+  const [newComent, setNewComent] = React.useState({});
 
   // FUNÇOES ////
-  function linksAndSpace(content = '') {
-    const hasLink = content.includes('http://') || content.includes('https://');
-    if (hasLink) {
-      const contentWord = content.split(' ');
-      const changeWords = contentWord.map((_word) => {
-        const validadeContent = (word, prefix) => {
-          if (word.includes(prefix)) {
-            const before = word.substr(0, word.indexOf(prefix));
-            const cleanWord = word.replace(before, '');
-            word = `${before}<a href="${cleanWord}">${cleanWord}</a>`;
-          }
-          return word;
-        };
-        _word = validadeContent(_word, 'http://');
-        _word = validadeContent(_word, 'https://');
-
-        return word;
-      });
-      content = changeWords.join(' ');
-    }
-    return conteudo;
-  }
-
   function likeClick() {
     setCurtidas(curtidas + 1);
   }
@@ -55,17 +33,44 @@ const Post = ({
     setShares(shares + 1);
   }
 
-  function onComments() {
-    const comentar = comentarios.map((usuario) => (
+  function onComments({ target }) {
+    // console.log(target);
+    const comentar = (
       <div>
-        <input type="text" name="" id="" />
-        <img src={usuario.user.avatar} alt="avatar" />
-        <h4>{usuario.user.name}</h4>
-        <p>{usuario.content}</p>
-      </div>
-    ));
+        <form className={styled.novoComment}>
+          <label></label>
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Escreva um comentário"
+          />
+        </form>
 
-    return setComent(comentar);
+        <div>
+          {comentarios.map((usuario, index) => (
+            <div key={index}>
+              <div className={styled.atualComment}>
+                <img src={usuario.user.avatar} alt="avatar" />
+                <div>
+                  <div>
+                    <a href="#">{usuario.user.name}</a>
+                    <p>{usuario.content}</p>
+                  </div>
+                  <span>Curtir</span>
+                  <span>Responder</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+    if (!coment) {
+      return setComent(comentar);
+    } else {
+      return setComent(null);
+    }
   }
 
   return (
@@ -84,7 +89,7 @@ const Post = ({
         </div>
         <p
           className={styled.conteudo}
-          dangerouslySetInnerHTML={{ __html: linksAndSpace(conteudo) }}
+          dangerouslySetInnerHTML={{ __html: conteudo }}
         ></p>
         <img className={styled.banner} src={banner} alt="foto-post" />
         <div className={styled.status}>
@@ -93,25 +98,68 @@ const Post = ({
             <img className={styled.coracao} src={coracao} alt="coracao" />
             <span>{curtidas}</span>
           </div>
+
           <div className={styled.shares}>
-            <span>{comments} Comentários</span>
-            <span>{shares} compartilhamentos</span>
+            <label htmlFor="comentar">{comments}</label>
+            <input
+              className={styled.comentar}
+              onClick={onComments}
+              type="button"
+              value="comentarios"
+              id="comentar"
+            />
+
+            <label htmlFor="sheres">{shares}</label>
+            <input
+              className={styled.comentar}
+              type="button"
+              value="compartilhamentos"
+              id="comentar"
+            />
           </div>
         </div>
+
         <div className={styled.acoes}>
-          <div onClick={likeClick}>
-            <img src={like} />
-            <button>Like</button>
+          <div>
+            <label htmlFor="like">
+              <img src={like} alt="like" />
+            </label>
+            <input
+              value="Like"
+              type="button"
+              id="like"
+              className={styled.comentar}
+              onClick={likeClick}
+            />
           </div>
-          <div onClick={onComments}>
-            <img src={comentar} />
-            <button>Comentários</button>
+
+          <div>
+            <label htmlFor="comentar">
+              <img src={comentar} alt="comentar" />
+            </label>
+            <input
+              value="Comentarios"
+              type="button"
+              id="comentar"
+              className={styled.comentar}
+              onClick={onComments}
+            />
           </div>
-          <div onClick={sheresClick}>
-            <img src={compartilhar} />
-            <button>Compartilhar</button>
+
+          <div>
+            <label htmlFor="sheres">
+              <img src={compartilhar} alt="comentar" />
+            </label>
+            <input
+              value="Compartilhar"
+              type="button"
+              id="sheres"
+              className={styled.comentar}
+              onClick={sheresClick}
+            />
           </div>
         </div>
+
         <div>{coment}</div>
       </div>
     </section>
@@ -119,3 +167,26 @@ const Post = ({
 };
 
 export default Post;
+
+// function linksAndSpace(content = '') {
+//   const hasLink = content.includes('http://') || content.includes('https://');
+//   if (hasLink) {
+//     const contentWord = content.split(' ');
+//     const changeWords = contentWord.map((_word) => {
+//       const validadeContent = (word, prefix) => {
+//         if (word.includes(prefix)) {
+//           const before = word.substr(0, word.indexOf(prefix));
+//           const cleanWord = word.replace(before, '');
+//           word = `${before}<a href="${cleanWord}">${cleanWord}</a>`;
+//         }
+//         return word;
+//       };
+//       _word = validadeContent(_word, 'http://');
+//       _word = validadeContent(_word, 'https://');
+
+//       return word;
+//     });
+//     content = changeWords.join(' ');
+//   }
+//   return conteudo;
+// }

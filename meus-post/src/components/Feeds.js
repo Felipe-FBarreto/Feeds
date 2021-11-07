@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import Post from './Post';
+import Header from './Header';
+import Story from './Story';
 
 const Feeds = () => {
   const [dados, setDados] = React.useState([]);
@@ -19,22 +21,28 @@ const Feeds = () => {
   React.useEffect(() => {
     dadosApi();
   }, []);
+
   return (
-    <div key={dados.id}>
-      {dados.map((dados) => (
-        <Post
-          id={dados.id}
-          avatar={dados.user.avatar}
-          usuario={dados.user.name}
-          conteudo={dados.content}
-          banner={dados.content_image}
-          likes={dados.likes}
-          comentario={dados.total_comments}
-          compartilhamento={dados.shares}
-          comentarios={dados.comments}
-        />
-      ))}
-    </div>
+    <section>
+      <Header />
+      <Story />
+      <div>
+        {dados.map((dados) => (
+          <Post
+            key={dados.id}
+            id={dados.id}
+            avatar={dados.user.avatar}
+            usuario={dados.user.name}
+            conteudo={dados.content}
+            banner={dados.content_image}
+            likes={dados.likes}
+            comentario={dados.total_comments}
+            compartilhamento={dados.shares}
+            comentarios={dados.comments}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
 
