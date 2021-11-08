@@ -4,9 +4,11 @@ import word from '../assets/word.png';
 import pontos from '../assets/pontos.png';
 import curtir from '../assets/curtir.png';
 import coracao from '../assets/coracao.png';
+import perfil from '../assets/perfil.jpg';
 import compartilhar from '../assets/compartilhar.png';
 import comentar from '../assets/comentario.png';
 import like from '../assets/like.png';
+import Action from './Action';
 
 const Post = ({
   avatar,
@@ -25,6 +27,11 @@ const Post = ({
   const [newComent, setNewComent] = React.useState({});
 
   // FUNÇOES ////
+
+  function wrapLine(content) {
+    const wrap = content.split('<br />').join('<br/><br/>');
+    return wrap;
+  }
   function likeClick() {
     setCurtidas(curtidas + 1);
   }
@@ -33,12 +40,13 @@ const Post = ({
     setShares(shares + 1);
   }
 
-  function onComments({ target }) {
-    // console.log(target);
+  function onComments() {
     const comentar = (
       <div>
         <form className={styled.novoComment}>
-          <label></label>
+          <label>
+            <img className={styled.perfil} src={perfil} alt="perfil" />
+          </label>
           <input
             type="text"
             name=""
@@ -89,12 +97,12 @@ const Post = ({
         </div>
         <p
           className={styled.conteudo}
-          dangerouslySetInnerHTML={{ __html: conteudo }}
+          dangerouslySetInnerHTML={{ __html: wrapLine(conteudo) }}
         ></p>
         <img className={styled.banner} src={banner} alt="foto-post" />
         <div className={styled.status}>
           <div className={styled.likes}>
-            <img src={curtir} alt="like" />
+            <img className={styled.curtir} src={curtir} alt="like" />
             <img className={styled.coracao} src={coracao} alt="coracao" />
             <span>{curtidas}</span>
           </div>
@@ -120,44 +128,21 @@ const Post = ({
         </div>
 
         <div className={styled.acoes}>
-          <div>
-            <label htmlFor="like">
-              <img src={like} alt="like" />
-            </label>
-            <input
-              value="Like"
-              type="button"
-              id="like"
-              className={styled.comentar}
-              onClick={likeClick}
-            />
-          </div>
+          <Action id="like" src={like} value="like" onClick={likeClick} />
 
-          <div>
-            <label htmlFor="comentar">
-              <img src={comentar} alt="comentar" />
-            </label>
-            <input
-              value="Comentarios"
-              type="button"
-              id="comentar"
-              className={styled.comentar}
-              onClick={onComments}
-            />
-          </div>
+          <Action
+            id="comentar"
+            src={comentar}
+            value="Comentar"
+            onClick={onComments}
+          />
 
-          <div>
-            <label htmlFor="sheres">
-              <img src={compartilhar} alt="comentar" />
-            </label>
-            <input
-              value="Compartilhar"
-              type="button"
-              id="sheres"
-              className={styled.comentar}
-              onClick={sheresClick}
-            />
-          </div>
+          <Action
+            id="sheres"
+            src={compartilhar}
+            value="Compartilhar"
+            onClick={sheresClick}
+          />
         </div>
 
         <div>{coment}</div>

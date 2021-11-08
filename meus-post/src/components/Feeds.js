@@ -3,6 +3,7 @@ import axios from 'axios';
 import Post from './Post';
 import Header from './Header';
 import Story from './Story';
+import NewPost from './NewPost';
 
 const Feeds = () => {
   const [dados, setDados] = React.useState([]);
@@ -26,6 +27,7 @@ const Feeds = () => {
     <section>
       <Header />
       <Story />
+      <NewPost />
       <div>
         {dados.map((dados) => (
           <Post
